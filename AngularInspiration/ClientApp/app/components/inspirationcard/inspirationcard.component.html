@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div *ngIf="inspiration">
+        <div class="row">
+            <div class="col">
+                <h3>{{inspiration.title}}</h3>
+            </div>
+            <div class="col">
+                <a href="{{inspiration.link}}">Link</a>
+            </div>
+        </div>
+        <div class="row">
+            {{inspiration.summary}}
+        </div>
+    </div>
+</div>

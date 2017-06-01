@@ -1,0 +1,17 @@
+{
+    "version": "0.1.0",
+    "command": "dotnet",
+    "isShellCommand": true,
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "build",
+            "showOutput": "always",
+            "isBuildCommand": true,
+            "args": [
+                "${workspaceRoot}/AngularInspiration/AngularInspiration.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

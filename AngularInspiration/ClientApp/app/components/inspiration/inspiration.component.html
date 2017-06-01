@@ -1,0 +1,16 @@
+<h1>A Form</h1>
+
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="searchTerm" name="name">
+    </div>
+</form>
+
+<div *ngIf="isLoading" class="loader">
+
+</div>
+
+<div *ngFor="let card of inspirations">
+    <inspiration-card [inspiration]="card"></inspiration-card>
+</div>
