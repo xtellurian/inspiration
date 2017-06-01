@@ -5,13 +5,13 @@ using Xunit;
 
 namespace DotnetTests
 {
-    public class arXivRepoTest
+    public class DoajRepoTests
     {
         [Theory]
         [InlineData("blue")]
         public async Task RepoTest1(string searchTerm)
         {
-            var repo = new arXivRepo() as ArticleRepo;
+            var repo = new DoajRepo() as ArticleRepo;
             var x = await repo.Search(searchTerm, 1);
             Assert.True(string.Equals(x.SearchTerm, searchTerm));
             Assert.True(x.Count >= 0);

@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AngularInspiration.Model;
+using AngularInspiration.Model.Contract;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -28,13 +32,35 @@ namespace AngularInspiration
             Configuration = builder.Build();
         }
 
+        public IContainer ApplicationContainer { get; private set; }
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            var textAnalyticsApiKey = Configuration["TextAnalyticsApiKey"];
+
             // Add framework services.
             services.AddMvc();
+
+            // Create the container builder.
+            var builder = new ContainerBuilder();
+
+            // Register dependencies, populate the services from
+            // the collection, and build the container. If you want
+            // to dispose of the container at the end of the app,
+            // be sure to keep a reference to it as a property or field.
+            
+            builder.RegisterType<InspirationService>().As<IInspirationService>();
+            builder.RegisterType<InspirationRespositoryFactory>().As<IRepoFactory>();
+            builder.RegisterType<TextAnalyticsService>()
+                .As<ITextAnalyticsService>()
+                .WithParameter("apiKey", textAnalyticsApiKey);
+            builder.Populate(services);
+            this.ApplicationContainer = builder.Build();
+
+            // Create the IServiceProvider based on the container.
+            return new AutofacServiceProvider(this.ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

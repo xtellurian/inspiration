@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="AngularInspiration/AngularInspiration.csproj" />
+    <ProjectReference Include="..\AngularInspiration\AngularInspiration.csproj" />
   </ItemGroup>
 
 </Project>

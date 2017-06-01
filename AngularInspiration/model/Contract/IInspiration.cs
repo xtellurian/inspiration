@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace AngularInspiration.Model
+namespace AngularInspiration.Model.Contract
 {
     public interface IInspiration
     {
-
+        string Id {get;set;}
         string Title {get;}
         string Summary {get;}
         string Link {get;}

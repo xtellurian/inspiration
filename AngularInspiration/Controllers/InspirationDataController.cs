@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AngularInspiration.Model;
+using AngularInspiration.Model.Contract;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,6 +16,11 @@ namespace AngularInspiration.Controllers
     [Route("api/[controller]")]
     public class InspirationDataController : Controller
     {
+        private IInspirationService _inspirationService;
+        public InspirationDataController(IInspirationService inspirationService)
+        {
+            _inspirationService = inspirationService;
+        }
         private string uri = @"https://prod-01.australiasoutheast.logic.azure.com:443/workflows/b3c5ce8f8eec4389a50fcd56e83ef36d/triggers/request/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=q1qiGY7J3_sznpqMw4x1rLhoxEbbJOCbTpKhkL-phGc";
 
         private static InspirationRequest _lastRequest;
@@ -41,6 +47,17 @@ namespace AngularInspiration.Controllers
             if(len == 0) return Ok(EmptySummary);
             var rnd = new Random();
             return Ok(allArticles[rnd.Next(0,len)]);
+        }
+        private static InspirationSession _session;
+        [HttpGet("[action]")]
+        public async Task<IActionResult> NextRandom()
+        {
+            if(_session == null) _session = _inspirationService.NewSession();
+
+            var request = MakeRequest();
+            if(!request.IsValid()) return BadRequest("Invalid Data Request");
+            var response = await _session.NextRandom(request.Queries.FirstOrDefault(), request.Num);
+            return Ok(response);
         }
 
         private InspirationCard EmptySummary => new InspirationCard()

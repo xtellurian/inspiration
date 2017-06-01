@@ -25,7 +25,7 @@ export class InspirationComponent {
     public onSubmit = function(){
         if(!this.searchTerm) return;
         this.isLoading = true;
-        this._http.get(this._originUrl + '/api/InspirationData/Random?query=' + this.searchTerm + "&num=5&arxiv=true&doaj=true").subscribe(result => {
+        this._http.get(this._originUrl + "/api/InspirationData/NextRandom?query=" + this.searchTerm + "&num=5&arxiv=true&doaj=true").subscribe(result => {
             var card = result.json() as InspirationCard;
             this.inspiration = card
             this.inspirations.unshift(card);

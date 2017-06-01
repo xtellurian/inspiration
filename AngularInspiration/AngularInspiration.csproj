@@ -7,8 +7,8 @@
   <PropertyGroup>
     <UserSecretsId>792785f7-5011-467c-8572-14eee4e4c092</UserSecretsId>
   </PropertyGroup>
-  
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="1.1.1" />
