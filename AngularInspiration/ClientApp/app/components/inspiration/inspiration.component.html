@@ -1,11 +1,15 @@
-<h1>A Form</h1>
+<h3>
+  Inspiration
+  <small class="text-muted">comes from somewhere</small>
+</h3>
 
-<form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="searchTerm" name="name">
-    </div>
-</form>
+<div class="form-group">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input type="text" placeholder="What are you working on?" class="form-control" id="name" required [(ngModel)]="searchTerm" name="name">
+        </div>
+    </form>
+</div>
 
 <div *ngIf="isLoading" class="loader">
 

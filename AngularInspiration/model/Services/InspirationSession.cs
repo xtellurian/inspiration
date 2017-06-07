@@ -43,10 +43,7 @@ namespace AngularInspiration.Model
             var keyPhrases = await GetRelatedKeyphrases(PickRandom(_repos),text, bredthFactor );
 
             // also run a task with all the keyPhrases to fill up our queue in the background
-             foreach(var t in _backgroundtasks) // remove complete
-            {
-                if(t.IsCompleted) _backgroundtasks.Remove(t);
-            }
+            _backgroundtasks.RemoveAll(t=> t.IsCompleted);
             
             _backgroundtasks.Add(FillQueue(text, _repos, keyPhrases, bredthFactor));
 

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "55d16246eeed301d1a93"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5f64c6cf0e3956dc161d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1691,13 +1691,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var HomeComponent = (function () {
     function HomeComponent() {
+        this.getStarted = function () {
+            alert("hello button");
+        };
     }
     return HomeComponent;
 }());
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(28)
+        template: __webpack_require__(28),
+        styles: [__webpack_require__(52)]
     })
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
@@ -2212,13 +2216,13 @@ module.exports = "<h1>Weather forecast</h1>\r\n\r\n<p>This component demonstrate
 /* 28 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Hello, world! number 2</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>To help you get started, we've also set up:</p>\r\n<ul>\r\n    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>\r\n    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>\r\n    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected is into the page.</li>\r\n    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n</ul>\r\n";
+module.exports = "<h2>Welcome\r\n    <small class=\"text-muted\">to Inspire my Work</small>\r\n</h2>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <h4>Find Related Articles\r\n            <small class=\"text-muted\">from millions of articles</small>\r\n        </h4>\r\n    </div>\r\n    <div class=\"row\">\r\n        <h4>Intelligent Lateral Connetions\r\n            <small class=\"text-muted\">using AI Text Analysis</small>\r\n        </h4>\r\n    </div>\r\n</div>\r\n<br/>\r\n<div>\r\n    <p>We've already connected these sources:</p>\r\n    <ul class=\"list-group\">\r\n        <li class=\"list-group-item\"><strong>ArXiv Pre-Print Server</strong> <br/> Open access to 1,270,300 e-prints in Physics, Mathematics, Computer\r\n            Science, Quantitative Biology, Quantitative Finance and Statistics</li>\r\n        <li class=\"list-group-item\"><strong>Directory of Open Access Journas</strong> <br/> DOAJ is a community-curated online directory that indexes\r\n            and provides access to high quality, open access, peer-reviewed journals. </li>\r\n    </ul>\r\n</div>\r\n<div class=\"align-center\">\r\n    <a routerLink=\"/inspiration\"><button type=\"button\" class=\"btn btn-success\">Get Started</button></a>\r\n</div>";
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>A Form</h1>\n\n<form (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" required [(ngModel)]=\"searchTerm\" name=\"name\">\n    </div>\n</form>\n\n<div *ngIf=\"isLoading\" class=\"loader\">\n\n</div>\n\n<div *ngFor=\"let card of inspirations\">\n    <inspiration-card [inspiration]=\"card\"></inspiration-card>\n</div>\n";
+module.exports = "<h3>\n  Inspiration\n  <small class=\"text-muted\">comes from somewhere</small>\n</h3>\n\n<div class=\"form-group\">\n    <form (ngSubmit)=\"onSubmit()\">\n        <div class=\"form-group\">\n            <input type=\"text\" placeholder=\"What are you working on?\" class=\"form-control\" id=\"name\" required [(ngModel)]=\"searchTerm\" name=\"name\">\n        </div>\n    </form>\n</div>\n\n<div *ngIf=\"isLoading\" class=\"loader\">\n\n</div>\n\n<div *ngFor=\"let card of inspirations\">\n    <inspiration-card [inspiration]=\"card\"></inspiration-card>\n</div>";
 
 /***/ }),
 /* 30 */
@@ -2230,7 +2234,7 @@ module.exports = "<div class=\"container-fluid\">\n    <div *ngIf=\"inspiration\
 /* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">AngularInspiration</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class='glyphicon glyphicon-education'></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/inspiration']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Inspiration\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Inspire My Work</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <!--<li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class='glyphicon glyphicon-education'></span> Counter\r\n                    </a>\r\n                </li>-->\r\n                <!--<li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>-->\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/inspiration']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Inspiration\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 32 */
@@ -3913,6 +3917,34 @@ __webpack_require__(7);
 __webpack_require__(6);
 module.exports = __webpack_require__(5);
 
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.align-center {\n    text-align: center;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(51);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
 
 /***/ })
 /******/ ]);
